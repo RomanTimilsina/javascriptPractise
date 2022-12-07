@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+   .file-upload{
+    display:inline-flex;
+    align-items: center;
+    font-size: 15px;
+   }
+
+   .my-upload__input{
+    display: none;
+   }
+
+   .my-upload__button{
+    background: rgb(3, 190, 190);
+    color: white;
+    font-size: 1em;
+    margin-right: 10px;
+    border: 2px solid rgb(10, 144, 144);
+    border-radius: 4px;
+    outline: none;
+    padding: 0.5em 0.8em;
+    font-family: sans-serif;
+    font-weight: bold;
+    cursor:pointer;
+   }
+
+   .my-upload__button:active{
+    background: rgb(2, 153, 42);
+   }
+
+   .my-upload__label{
+    max-width:250px;
+    font-size: 0.95em;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+   }
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Custom upload button</h1>
+
+ <div class="file-upload">
+
+  <input class="my-upload__input" type="file" name="myFile[]" id="myFile" multiple>
+  <button class="my-upload__button" type="button">Upload</button>
+  <span class="my-upload__label"> No File(s) chosen </span>
+
+ </div>
+
+</body>
+
+</html>
