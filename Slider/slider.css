@@ -1,0 +1,63 @@
+body{
+  background-color: #927df1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.top{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.arrow{
+  height: 150px;
+  cursor: pointer;
+}
+
+.left{
+  transform: rotate(180deg);
+}
+
+.frame{
+  height: 250px;
+  width: 350px;
+  overflow: hidden;
+}
+
+.image{
+  height: 250px;
+  width: 350px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.slider{
+  display: flex;
+  transition: all 1s ease;
+}
+
+.bottom{
+  display: flex;
+  gap: 1rem;
+}
+
+.button{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.fill{
+  background-color: white;
+}
