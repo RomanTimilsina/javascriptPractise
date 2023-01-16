@@ -1,0 +1,77 @@
+body{
+  background-color: rgb(25, 25, 84);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Open Sans, sans-serif';
+}
+
+.container{
+  width: 40vw;
+  height: 70vh;
+  background-color: #fff;
+  position: relative;
+}
+
+.content{
+  padding: 1.5rem;
+}
+
+.answers{
+  padding: 1rem;
+}
+
+.answer{
+  margin: 1rem;
+}
+
+.submit{
+  background-color: rebeccapurple;
+  color: #fff;
+  font-size: larger;
+  width: 100%;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  padding: 1rem;
+}
+
+.game{
+  visibility: visible;
+}
+
+.result{
+  
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 5rem;
+  justify-content: center;
+  display: none;
+  
+}
+
+.correct{
+  color: rgba(62, 161, 0, 0.61);
+}
+
+.wrong{
+  color: red;
+}
+
+.score{
+  color: blue;
+}
+
+.play{
+  color: white;
+  font-weight: bold;
+  background-color: purple;
+  border: none;
+  outline: none;
+  padding: .5rem;
+  
+}
+
+
