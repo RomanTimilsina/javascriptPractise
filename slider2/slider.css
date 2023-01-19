@@ -1,0 +1,67 @@
+body{
+  background-color: rebeccapurple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 30px;
+}
+
+.top{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+
+
+.right{
+  transform: rotate(180deg);
+}
+
+.bottom{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.frame{
+  width: 750px;
+  height: 500px;
+  overflow: hidden;
+}
+
+.slider{
+  display: flex;
+  transition: all .5s ease;
+}
+
+.image{
+  width: 750px;
+  height: 500px;
+  background-size: contain;
+  
+}
+
+.arrow{
+  height: 150px; 
+  cursor: pointer;
+}
+
+.button{
+width: 20px;
+height: 20px;
+border-radius: 50%;
+border: 1px solid white;
+cursor: pointer;
+}
+
+.fill{
+  background-color: white;
+}
+
