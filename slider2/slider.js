@@ -43,7 +43,7 @@ right.addEventListener('click', () => {
   
 })
 
-function finalSlide(){ // slides to last image on clicking left at start of images
+function finalSlide() { // slides to last image on clicking left at start of images
   console.log(slideNumber)
   slider.style.transform = `translateX(-${750*(slider.children.length-1)}px)` 
   slideNumber = slider.children.length
@@ -58,7 +58,6 @@ function prevSlide(){
 }
 
 left.addEventListener('click', () => {
-  
   slideNumber > 1 ? prevSlide() : finalSlide()
   
 })
