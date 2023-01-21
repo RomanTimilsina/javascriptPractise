@@ -30,7 +30,112 @@ const data = [
   },
 ];
 
-const  question = document.querySelector('.question')
+const  question = document.querySelector('.question');
+const  options = document.querySelector('.options');
+const  button = document.querySelector('.button');
+const  result = document.querySelector('.result');
+const  output = document.querySelector('.output');
+const  game = document.querySelector('.game');
+const  play = document.querySelector('.play');
+
+let val = 0;
+let selectAnswer;
+let correct=0,wrong=0,score=0,QL,AL;
+
+const setQuestionsAndAnswer = () => 
+{
+ QL = data.map( item => {
+  return item.question
+  
+})
+
+
+ AL = data.map( item => {
+ return item.answers.map(( a, i ) =>
+  `
+  <div class="option">
+  <input name="option" type="radio" id=${i} class="input" value=${a.isCorrect}>
+  <label for=${i}>${a.answer}</label>
+  </div>
+  `
+    ).join('')
+}
+)
+
+question.innerHTML = QL[val] 
+options.innerHTML = AL[val]  
+
+}
+
+setQuestionsAndAnswer()
+
+function add_click_Event_to_options()
+{
+  options.querySelectorAll('input').forEach(el => {
+  el.addEventListener('click', (e) => {
+    selectAnswer = e.target.value
+    
+  })
+})}
+
+add_click_Event_to_options()
+
+const submitAnswer = () => 
+{
+output.style.display = 'none';
+button.addEventListener('click', (e) => {
+  
+  if( selectAnswer !== undefined) {
+    selectAnswer === 'true' ? correct++:wrong++;
+    score = (correct - wrong ) * 10
+    if(val < data.length-1) {
+  val++ ;
+  question.innerHTML = QL[val]
+  options.innerHTML = AL[val]
+  
+  add_click_Event_to_options()
+  }
+  else{
+    displayResult()
+    output.style.display = 'block';
+    
+    game.style.display = 'none'
+  }
+  selectAnswer = undefined
+}
+})
+}
+
+submitAnswer()
+
+const showResult = document.createElement('span')
+
+const displayResult = () => {
+  
+  showResult.innerHTML = 
+`
+  <div class="correct">Correct : ${correct}</div>
+  <div class="wrong">Wrong : ${wrong}</div>
+  <div class="score">Score : ${score}</div>
+`
+
+result.children[0].append(showResult)
+}
+
+play.addEventListener('click' , () => {
+  output.style.display = 'block';
+  
+    game.style.display = 'none';
+    val = 0;
+  setQuestionsAndAnswer()
+  add_click_Event_to_options()
+})
+
+
+
+
+
+
 
 
 
