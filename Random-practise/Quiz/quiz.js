@@ -45,13 +45,16 @@ let correct=0,wrong=0,score=0,QL,AL;
 const setQuestionsAndAnswer = () => 
 {
  QL = data.map( item => {
+
   return item.question
   
 })
 
 
  AL = data.map( item => {
+
  return item.answers.map(( a, i ) =>
+
   `
   <div class="option">
   <input name="option" type="radio" id=${i} class="input" value=${a.isCorrect}>
@@ -62,8 +65,7 @@ const setQuestionsAndAnswer = () =>
 }
 )
 
-question.innerHTML = QL[val] 
-options.innerHTML = AL[val]  
+
 
 }
 
@@ -72,7 +74,9 @@ setQuestionsAndAnswer()
 function add_click_Event_to_options()
 {
   options.querySelectorAll('input').forEach(el => {
+
   el.addEventListener('click', (e) => {
+
     selectAnswer = e.target.value
     
   })
@@ -80,27 +84,37 @@ function add_click_Event_to_options()
 
 add_click_Event_to_options()
 
+const startPlaying = () =>
+{
+   
+if(val <= data.length-1) {
+
+question.innerHTML = QL[val]
+options.innerHTML = AL[val]
+val = val + 1 ;
+
+add_click_Event_to_options()
+}
+else{
+displayResult()
+output.style.display = 'block';
+
+game.style.display = 'none'
+}}
+
+startPlaying()
+
 const submitAnswer = () => 
 {
 output.style.display = 'none';
 button.addEventListener('click', (e) => {
   
   if( selectAnswer !== undefined) {
-    selectAnswer === 'true' ? correct++:wrong++;
+    selectAnswer === 'true' ? correct++ : wrong++;
     score = (correct - wrong ) * 10
-    if(val < data.length-1) {
-  val++ ;
-  question.innerHTML = QL[val]
-  options.innerHTML = AL[val]
-  
-  add_click_Event_to_options()
-  }
-  else{
-    displayResult()
-    output.style.display = 'block';
     
-    game.style.display = 'none'
-  }
+    startPlaying()
+
   selectAnswer = undefined
 }
 })
@@ -120,16 +134,143 @@ const displayResult = () => {
 `
 
 result.children[0].append(showResult)
+
 }
 
 play.addEventListener('click' , () => {
-  output.style.display = 'block';
+
+  output.style.display = 'none';
+
+  game.style.display = 'block';
+
+  val = 0;
   
-    game.style.display = 'none';
-    val = 0;
-  setQuestionsAndAnswer()
+ selectAnswer = undefined;
+
+ correct=0,wrong=0,score=0,QL,AL;
+
+  
+  
   add_click_Event_to_options()
+
+  startPlaying()
+  
+  submitAnswer()
+
+  displayResult()
+
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
