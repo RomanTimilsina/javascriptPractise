@@ -45,6 +45,7 @@ const data = [
 
 const search = document.querySelector('.search');
 const ImageContainer = document.querySelector('.products');
+const categories = document.querySelector('.categories');
 
 
 function displayImage( displayImg ) {
@@ -66,7 +67,7 @@ displayImage(data)
 search.addEventListener('input', (e) => {
 
   const displayImg = data.filter( d => {
-   return  d.name.toLowerCase().includes(e.target.value.toLowerCase())
+   return d.name.toLowerCase().includes(e.target.value.toLowerCase())
     
     
   })
@@ -74,8 +75,27 @@ search.addEventListener('input', (e) => {
   displayImage(displayImg)
 })
 
+const addCategories = () => {
+  const uniqueCat = ['All',...new Set(data.map(item => {
+    return item.cat
+  }))]
+
+ 
+
+  categories.innerHTML = uniqueCat.map(item => 
+    `
+    <span class="cat">${item}</span>
+    `
+    ).join('')
 
 
+}
+
+addCategories()
+
+categories.addEventListener('click', (e) => {
+  e.target.innerText === 'All' ? displayImage(data) : displayImage(data.filter( item => e.target.innerText === item.cat ))
+})
 
 
 

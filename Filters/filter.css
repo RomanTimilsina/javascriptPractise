@@ -29,6 +29,7 @@ h1{
   font-size: 25px;
   color: rgb(134, 133, 133);
   gap: 4;
+  cursor: pointer;
 }
 
 
@@ -44,12 +45,12 @@ h1{
 }
 
 .product{
-  width: 200px;
+  width: 250px;
   background-size:contain ;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 15px;
+ 
   align-items: center;
   margin: 40px;
 
@@ -66,7 +67,7 @@ h1{
 img{
   width: 200px;
   height: 200px;
-  object-fit: cover;
+  object-fit: contain;
 
 }
 
