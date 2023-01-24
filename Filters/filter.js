@@ -46,10 +46,12 @@ const data = [
 const search = document.querySelector('.search');
 const ImageContainer = document.querySelector('.products');
 const categories = document.querySelector('.categories');
+const priceRange = document.querySelector('.priceRange');
+const priceValue = document.querySelector('.priceValue');
 
 
 function displayImage( displayImg ) {
-  console.log(displayImg)
+  
   ImageContainer.innerHTML = displayImg.map(item => 
 
     `<div class='product'>
@@ -80,7 +82,6 @@ const addCategories = () => {
     return item.cat
   }))]
 
- 
 
   categories.innerHTML = uniqueCat.map(item => 
     `
@@ -96,6 +97,40 @@ addCategories()
 categories.addEventListener('click', (e) => {
   e.target.innerText === 'All' ? displayImage(data) : displayImage(data.filter( item => e.target.innerText === item.cat ))
 })
+
+const slider = () => {
+
+  const PriceList = data.map(item => item.price)
+    const min = Math.min(...PriceList)
+    const max = Math.max(...PriceList)
+    priceValue.innerText = '$'+max
+    priceRange.setAttribute('min',min)
+    priceRange.setAttribute('max',max)
+  
+
+  priceRange.addEventListener('input', (e) => {
+
+    priceValue.innerHTML = '$'+e.target.value
+
+    displayImage(data.filter(item => {
+      return item.price <= e.target.value
+    })  )
+  
+  })
+}
+
+slider()
+
+
+
+
+
+
+
+
+
+
+
 
 
 
