@@ -1,0 +1,47 @@
+.tabs{
+  border: 1px solid grey;
+  display: flex;
+}
+
+.tabs__sidebar{
+ 
+  flex-shrink: 0;
+  width: 125px;
+}
+
+.tabs__button{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(185, 183, 183);
+  border: none;
+}
+
+.tabs__button:active{
+  background-color: aquamarine;
+}
+
+.tabs__button:not(:last-of-type){
+  border-bottom: 1px solid #e3e0e0;
+}
+
+.tabs__button--active{
+  font-weight: bold;
+  border-right: 5px solid red;
+  background-color: rebeccapurple;
+}
+
+.tabs__content{
+  padding: 10px;
+  font-size: 0.8rem;
+  display: none;
+}
+
+.tabs__content--active{
+  display: block;
+}
+
+
+
+
