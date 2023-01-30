@@ -1,6 +1,7 @@
 .tabs{
   border: 1px solid grey;
   display: flex;
+  min-height: 150px;
 }
 
 .tabs__sidebar{
@@ -42,6 +43,8 @@
   display: block;
 }
 
-
+.tabs__content > :first-child{
+  margin-top: 0;
+}
 
 
