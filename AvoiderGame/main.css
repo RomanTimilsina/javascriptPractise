@@ -1,0 +1,37 @@
+body{
+  background: #333;
+}
+
+.header{
+  color: #ffffff;
+  font-family: sans-serif;
+  padding: 5px;
+}
+
+.grid{
+  background: #222;
+  display: inline-grid;
+  gap: 10px;
+  padding: 20px;
+  grid-template-columns: repeat(3, 30px);
+  border: 1px solid #ffffff;
+}
+
+.cell{
+  height: 30px;
+}
+
+.enemy,
+.player{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.enemy{
+  background-color: rgb(209, 15, 15);
+}
+
+.player{
+  background-color: rgb(20, 167, 230);
+}
