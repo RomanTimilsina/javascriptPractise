@@ -5,7 +5,13 @@ const scoreDisplay = document.querySelector('.score')
 
 let dropCount, speed, score;
 
+reset()
+
 document.addEventListener('keydown', e => {
+
+  if(!dropCount){
+    startNewGame()
+  }
   const player = document.querySelector('.player');
 
   if(e.key === 'ArrowRight' && playerCells.includes(player.parentElement.nextElementSibling)){
@@ -17,5 +23,62 @@ document.addEventListener('keydown', e => {
   }
 })
 
+function reset(){
+  dropCount = 0;
+  speed = 1000;
+  score = 0;
+  scoreDisplay.innerHTML = '0';
+  cells.forEach(cell => {
+    cell.innerHTML = '';
+  })
+  playerCells[1].innerHTML = '<div class="player"></div>';
+}
 
+function startNewGame(){
+  reset();
+  loop();
+}
 
+function loop(){
+  let stopGame = false;
+
+  for(let i = enemyCells.length - 1; i >= 0;i--){
+    const cell = enemyCells[i];
+    const nextCell = cells[i+3];
+    const enemy = cell.children[0];
+
+    if(!enemy){
+      continue;
+    }
+
+    nextCell.appendChild(enemy);
+    console.log()
+   
+    if(playerCells.includes(nextCell)){
+      if(nextCell.querySelector('.player')){
+        stopGame = true;
+      }
+      else{
+        speed = Math.max(500,speed - 25);
+        score++ ;
+        scoreDisplay.innerHTML = score;
+        enemy.remove();
+      }
+    }
+  }
+
+  if( dropCount % 2 === 0){
+    const position = Math.floor(Math.random() * 3)
+
+    enemyCells[position].innerHTML =  '<div class="enemy"></div>';
+  }
+
+  if(stopGame){
+    alert('Score : '+ score + ". Wanna play new game?")
+    reset()
+  }
+  else {
+    dropCount++;
+    setTimeout(loop,speed);
+  }
+}
