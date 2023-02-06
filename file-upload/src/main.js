@@ -26,6 +26,35 @@ document.querySelectorAll(".dropzone__input").forEach((inputElement) => {
   })
 });
 
+function updateThumbnail(dropZoneElement, file){
+  let thumbnail = dropZoneElement.querySelector('.dropzone__thumb');
 
+  //runs first time when there's only prompt
+  if(dropZoneElement.querySelector('.dropzone__prompt')){
+    dropZoneElement.querySelector('.dropzone__prompt').remove();
+  }
+  
+
+  //runs first time when there's no thumbnail
+  if(!thumbnail){
+     thumbnail = document.createElement('div');
+
+    thumbnail.classList.add('dropzone__thumb');
+    dropZoneElement.appendChild(thumbnail);
+  }
+
+  thumbnail.dataset.label = file.name;
+  console.log(file.type.slice(0,6))
+  if(file.type.slice(0,6) === 'image/'){
+   const reader = new FileReader();
+
+   reader.readAsDataURL(file);
+   reader.onload = () => {
+    thumbnail.style.backgroundImage = `url('${reader.result}')`;
+   }
+  }else{
+    thumbnail.style.backgroundImage = null;
+  }
+}
 
 
