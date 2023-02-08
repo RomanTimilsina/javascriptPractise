@@ -3,6 +3,16 @@ document.querySelectorAll(".dropzone__input").forEach((inputElement) => {
 
 	const dropZoneElement = inputElement.closest(".dropzone");
 
+  dropZoneElement.addEventListener('click', (e) => {
+    inputElement.click();
+  })
+
+  dropZoneElement.addEventListener('change', (e) => {
+    if(inputElement.files.length){
+      updateThumbnail(dropZoneElement, inputElement.files[0])
+    }
+  })
+
   dropZoneElement.addEventListener("dragover", e => {
 		e.preventDefault();
 		dropZoneElement.classList.add("dropzone--over");
