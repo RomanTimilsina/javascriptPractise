@@ -21,7 +21,7 @@ const Keyboard = {
         this.elements.keysContainer = document.createElement("div");
 
         // setup main elements
-        this.elements.main.classList.add('keyboard');
+        this.elements.main.classList.add('keyboard','keyboard--hidden');
         this.elements.keysContainer.classList.add('keyboard__keys');
 
         this.elements.keysContainer.appendChild(this._createKeys());
@@ -31,7 +31,16 @@ const Keyboard = {
 
         // Add to DOM
         this.elements.main.appendChild(this.elements.keysContainer);
-        document.body.appendChild(this.elements.main)
+        document.body.appendChild(this.elements.main);
+
+        //Automatically use keyboard for input with use-keyboard-input.
+        document.querySelectorAll('.use-keyboard-input').forEach(element => {
+            element.addEventListener('focus', () => {
+                this.open(element.value, currentValue => {
+                    element.value = currentValue;
+                })
+            })
+        })
     },
 
     _createKeys(){
@@ -154,21 +163,18 @@ const Keyboard = {
         this.properties.value = initialValue || "";
         this.eventHandlers.oninput = oninput;
         this.eventHandlers.onclose = onclose;
-        //this.elements.main.remove('keyboard--hidden');
+        this.elements.main.classList.remove('keyboard--hidden');
     },
 
     close(){
-
+        this.properties.value = "";
+        this.eventHandlers.oninput = oninput;
+        this.eventHandlers.onclose = onclose;
+        this.elements.main.classList.add('keyboard--hidden');
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     Keyboard.init();
-    Keyboard.open('xyz', function (val){
-        console.log('here:' + val);
-    },
-    function (val){
-        console.log('closed:' + val);
-    });
-
+   
 })
