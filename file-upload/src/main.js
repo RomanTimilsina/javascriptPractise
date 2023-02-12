@@ -18,7 +18,7 @@ document.querySelectorAll(".dropzone__input").forEach((inputElement) => {
 		dropZoneElement.classList.add("dropzone--over");
   });
 
-  ['dragleave','deagend'].forEach(type => {
+  ['dragleave','dragend'].forEach(type => {
     dropZoneElement.addEventListener(type, e => {
       dropZoneElement.classList.remove('dropzone--over')
     })

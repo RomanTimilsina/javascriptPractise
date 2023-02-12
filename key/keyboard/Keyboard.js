@@ -176,5 +176,4 @@ const Keyboard = {
 
 document.addEventListener("DOMContentLoaded", () => {
     Keyboard.init();
-   
 })
